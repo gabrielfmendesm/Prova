@@ -1,0 +1,6 @@
+br/Insper/Prova/ProvaApplication.class
+br/Insper/Prova/Jogadores/Jogador.class
+br/Insper/Prova/Jogadores/JogadorService.class
+br/Insper/Prova/Jogadores/RetornarTimeDTO.class
+br/Insper/Prova/Jogadores/JogadorRepository.class
+br/Insper/Prova/Jogadores/JogadorController.class
