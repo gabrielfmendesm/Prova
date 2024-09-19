@@ -25,7 +25,7 @@ public class JogadorService {
         for (Integer time : jogador.getTimes()) {
             RestTemplate restTemplate = new RestTemplate();
             ResponseEntity<RetornarTimeDTO> timeResponse = restTemplate.getForEntity(
-                    "http://3.81.161.81:8081/time/" + time, RetornarTimeDTO.class);
+                    "http://3.81.161.81:8082/time/" + time, RetornarTimeDTO.class);
 
             if (!timeResponse.getStatusCode().is2xxSuccessful()) {
                 throw new IllegalArgumentException("Time " + time + " não encontrado");
@@ -48,7 +48,7 @@ public class JogadorService {
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<RetornarTimeDTO> timeResponse = restTemplate.getForEntity(
-                "http://3.81.161.81:8081/time/" + time, RetornarTimeDTO.class);
+                "http://3.81.161.81:8082/time/" + time, RetornarTimeDTO.class);
 
         if (!timeResponse.getStatusCode().is2xxSuccessful()) {
             throw new IllegalArgumentException("Time " + time + " não encontrado");
