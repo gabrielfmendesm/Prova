@@ -1,0 +1,6 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Prova,br.Insper.Prova.Cursos,CursoController,16,3,0,0,3,1,3,1,3,1
+Prova,br.Insper.Prova.Cursos,CursoService,229,3,36,0,41,1,22,1,4,1
+Prova,br.Insper.Prova.Cursos,Curso,3,0,0,0,1,0,1,0,1,0
+Prova,br.Insper.Prova.Cursos,RetornarPessoaDTO,3,0,0,0,1,0,1,0,1,0
+Prova,br.Insper.Prova,ProvaApplication,5,3,0,0,2,1,1,1,1,1
