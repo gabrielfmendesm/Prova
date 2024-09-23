@@ -24,6 +24,16 @@ public class CursoService {
             throw new IllegalArgumentException("Número máximo de alunos do curso é obrigatório");
         } else if (curso.getCpf_professor() == null) {
             throw new IllegalArgumentException("CPF do professor do curso é obrigatório");
+        } else if (curso.getAlunos() != null) {
+            for (String cpf_aluno : curso.getAlunos()) {
+                RestTemplate restTemplate = new RestTemplate();
+                ResponseEntity<RetornarPessoaDTO> alunoResponse = restTemplate.getForEntity(
+                        "http://184.72.80.215:8080/usuario/" + cpf_aluno, RetornarPessoaDTO.class);
+
+                if (!alunoResponse.getStatusCode().is2xxSuccessful()) {
+                    throw new IllegalArgumentException("Aluno " + cpf_aluno + " não encontrado");
+                }
+            }
         }
 
         RestTemplate restTemplate = new RestTemplate();
