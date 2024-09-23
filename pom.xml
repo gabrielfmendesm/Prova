@@ -28,6 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>21</java.version>
+		<project.test.result.directory>${project.build.directory}/test-results</project.test.result.directory>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -62,13 +63,43 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.12</version>
+				<executions>
+					<execution>
+						<id>pre-test</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+						<configuration>
+							<propertyName>jacocoArgLine</propertyName>
+							<destFile>${project.test.result.directory}/jacoco/jacoco.exec</destFile>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>post-test</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<dataFile>${project.test.result.directory}/jacoco/jacoco.exec</dataFile>
+							<outputDirectory>${project.test.result.directory}/jacoco</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.3.1</version>
 				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
+					<argLine>${jacocoArgLine}</argLine>
+					<reportsDirectory>${project.test.result.directory}/surefire</reportsDirectory>
 				</configuration>
 			</plugin>
 		</plugins>
